@@ -11,7 +11,9 @@ function [lhsm, sigma, aic, bic]=scmobj(psd,freq,s,lmd)
 %         amplitudes
 % Output
 %         U ---- score equations
-%      info ---- approximation to fisher information matrix (Demidenko mixed models pp86)
+%         lhsm --- negative log likelihood
+%         sigma --- fitted spectrum
+%         abic --- Akaike/Bayesian information criteria 
 
 % Shiang Hu, Jul. 2018
 

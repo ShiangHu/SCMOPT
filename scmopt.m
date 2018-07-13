@@ -6,7 +6,6 @@ load psdf;
 options = optimoptions(@fmincon,'display','notify-detailed','diagnostics','off');
 % options.OptimalityTolerance=1e-45;
 options.MaxFunctionEvaluations=1e5;
-% options.UseParallel=1;
 
 lmd=0;
 sigall=zeros(nf,nc) ;
@@ -15,10 +14,11 @@ parall=zeros(60,nc);
 % parpool(210);
 tic;
 parfor chn=1:nc
+    fprintf('---fitting the %2d channel---\n',chn);
     psd = psdall(:,chn);
     [x0, lb0, ub0, ank] = initialscmopt(psd,freq);
-    if ank==0, continue; end
     
+    if ank~=0     
     abiclh = zeros(ank,3);
     sigma = zeros(nf,ank);
     xm = zeros(60,ank);
@@ -40,7 +40,8 @@ parfor chn=1:nc
     if k>ank,k=ank;end
     sigall(:,chn)=sigma(:,k) ;
     parall(:,chn)=xm(:,k);
-    fprintf('---fitting the %2d channel---\n',chn);
+    
+    end
     
 end
 toc;
