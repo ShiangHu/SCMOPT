@@ -1,5 +1,5 @@
 # SCMOPT(Spectrum Components Model OPTimized)
-			---a toolbox for quantitative neural spectrum analysis
+---a toolbox for quantitative neural spectrum analysis
 
 Main Functions:
 1) Calculate the spectra using thomsons multitaper method
